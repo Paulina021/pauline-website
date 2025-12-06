@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Pollie Carpentry </title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Pollie Carpentry</h1>
+        <img src="images/logo.jpeg" width="100px" hight="100px" alt="Business Logo">
+        <!-- Navigation Bar -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="shopping.html">Shopping</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Register an Account</h2>
+        <form action="#" method="POST" style="max-width: 50%; margin: auto;">
+            <div class="form-group">
+                <label for="fullNames">Full Names:</label>
+                <input type="text" id="fullNames" name="fullNames" required>
+            </div>
+
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telephoneWork">Telephone Work:</label>
+                <input type="tel" id="telephoneWork" name="telephoneWork">
+            </div>
+
+            <div class="form-group">
+                <label for="cellphoneNumber">Cellphone Number:</label>
+                <input type="tel" id="cellphoneNumber" name="cellphoneNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="homeAddress">Home Address:</label>
+                <input type="text" id="homeAddress" name="homeAddress" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="postalAddress">Postal Address:</label>
+                <input type="text" id="postalAddress" name="postalAddress">
+                <button type="button" onclick="copyAddress()">Copy Home Address</button>
+            </div>
+
+            <div class="form-group">
+                <label for="source">Where did you hear about us?</label>
+                <select id="source" name="source" required>
+                    <option value="wordOfMouth">Word of Mouth</option>
+                    <option value="internetSearch">Internet Search</option>
+                    <option value="advertising">Advertising</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="creditCardName">Name on Credit Card:</label>
+                <input type="text" id="creditCardName" name="creditCardName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="creditCardType">Credit Card Type:</label>
+                <select id="creditCardType" name="creditCardType" required>
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">MasterCard</option>
+                    <option value="amex">American Express</option>
+                    <option value="discover">Discover</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="creditCardNumber">Credit Card Number:</label>
+                <input type="text" id="creditCardNumber" name="creditCardNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expirationDate">Expiration Month:</label>
+                <select id="expirationMonth" name="expirationMonth" required>
+                    <option value="" disabled selected>Select Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+
+                <div class="form-group">
+                    <label for="expirationYear">Expiration Year:</label>
+                    <select id="expirationYear" name="expirationYear" required>
+                        <option value="" disabled selected>Select Year</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                    </select>
+                </div>
+
+            <div class="form-group">
+                <label for="cvc">CVC Number:</label>
+                <input type="text" id="cvc" name="cvc" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">User Name:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="passwordConfirmation">Password Confirmation:</label>
+                <input type="password" id="passwordConfirmation" name="passwordConfirmation" required>
+            </div>
+
+            <div class="form-group"></div>
+                <label for="additionalInfo">Additional Information:</label>
+                <textarea id="additionalInfo" name="additionalInfo"></textarea>
+            </div>
+           
+            <div class="form-group"></div>
+                <button><input type="submit" value="Submit"></button>
+            </div>
+            
+        </form>
+    </main>
+
+   
+     <footer>
+        <p>Contact us: <a href="tel:+27110897865" class="tel-link">&#128222; +27110897865</a></p>
+        <p>Email: <a href="mailto:info@polliecarpentry.com" class="email-link">&#9993; info@polliecarpentry.com</a></p>
+        <p>&copy; 2024 pPollie Carpentry</p>
+    </footer>
+</body>
+</html>

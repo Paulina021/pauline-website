@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollie Carpentry - Shopping</title>
+    <link rel="stylesheet" href="css/style.css">
+   
+</head>
+<body>
+    <header>
+        <h1>Pollie Carpentry</h1>
+        <img src="images/logo.jpeg" alt="Pollie Carpentry Logo">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="shopping.html">Shopping</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Shopping Cart</h2>
+        <p>Browse our high-quality carpentry products and add them to your cart!</p>
+
+        <section class="shopping-items">
+            <!-- Example items -->
+            <div class="item">
+                <img src="images/17.jpg" alt="Headboard" width="450px" height="400px">
+                <h2>Custom Headboard</h2>
+                <p>Elegant wooden headboard perfect for any bedroom.</p>
+                <p>Price: R4000</p>
+                <button class="add-to-cart" onclick="addToCart('Headboard', 4000)">
+                    <img src="images/4.jpeg" alt="Add to Cart" width="20px"> Add to Cart
+                </button>
+            </div>
+
+            <div class="item">
+                <img src="images/14.jpg" alt="Kitchen Cabinet" width="450px" height="400px">
+                <h2>Custom Kitchen Cabinet</h2>
+                <p>Elegant wooden Kitchen Cabinet with a smooth finish.</p>
+                <p>Price: R10000</p>
+                <button class="add-to-cart" onclick="addToCart('Kitchen Cabinet', 10000)">
+                    <img src="images/4.jpeg" alt="Add to Cart" width="20px"> Add to Cart
+                </button>
+            </div>
+
+
+            <div class="item">
+                <img src="images/16.jpeg" alt="Wardrobe" width="450px" height="400px">
+                <h2>Custom Wardrobe</h2>
+                <p>Elegant wooden wardrbe perfect for any bedroom.</p>
+                <p>Price: R15000</p>
+                <button class="add-to-cart" onclick="addToCart('Kitchen Cabinet', 10000)">
+                    <img src="images/4.jpeg" alt="Add to Cart" width="20px"> Add to Cart
+                </button>
+            </div>
+
+
+            <div class="item">
+                <img src="images/11.jpg" alt="Toilet cabinet" width="450px" height="400px">
+                <h2>Custom Toilet cabinet</h2>
+                <p>Beautiful custom-built cabinets for your toilets and also we do shower setup..</p>
+                <p>Price: R5000</p>
+                <button class="add-to-cart" onclick="addToCart('Kitchen Cabinet', 10000)">
+                    <img src="images/4.jpeg" alt="Add to Cart" width="20px"> Add to Cart
+                </button>
+            </div>
+
+
+            <div class="item">
+                <img src="images/1.jpeg" alt="Chair" width="450px" height="400px">
+                <h2>Custom Chair</h2>
+                <p>Elegant wooden ashley oversized reclined and comfortable chair.</p>
+                <p>Price: R10000</p>
+                <button class="add-to-cart" onclick="addToCart('Kitchen Cabinet', 10000)">
+                    <img src="images/4.jpeg" alt="Add to Cart" width="20px"> Add to Cart
+                </button>
+            </div>
+
+
+            <div class="item">
+                <img src="images/2.jpeg" alt="Custom Headboard" width="450px" height="400px">
+                <h3>Custom Headboard</h3>
+                <p>Beautiful handcrafted headboard made from oak.</p>
+                <p>Price: R2000</p>
+                <button class="add-to-cart" onclick="addToCart('Kitchen Cabinet', 10000)">
+                    <img src="images/4.jpeg" alt="Add to Cart" width="20px"> Add to Cart
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar">
+        <h2>Your Cart</h2>
+        <ul id="cart-items">
+           
+        </ul>
+        <p><strong>Total: R<span id="total-price">0</span></strong></p>
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+
+    <!-- Cart Icon -->
+    
+
+    <!-- Notification div -->
+    <div id="notification" class="notification">Item added to cart!</div>
+    
+    <div class="mini-cart">
+        <button class="mini-cart-button" onclick="toggleCart()">
+          <svg viewBox="0 0 24 24" role="presentation" style="width: 18px; height: 18px;">
+            <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" style="fill: currentcolor;"></path>
+          </svg>
+          
+          <span id="cart-count">0</span>  
+        </button>
+    
+      </div>
+      
+
+      <script>
+        let cart = [];
+        let total = 0;
+        let cartItemCount = 0;
+    
+        // Load cart from localStorage when the page loads
+        window.onload = function() {
+            const savedCart = localStorage.getItem('cart');
+            const savedTotal = localStorage.getItem('total');
+            const savedItemCount = localStorage.getItem('cartItemCount');
+    
+            // If there is saved cart data, load it
+            if (savedCart) {
+                cart = JSON.parse(savedCart);  // Parse JSON string back to object/array
+                total = parseFloat(savedTotal);  // Load the saved total
+                cartItemCount = parseInt(savedItemCount) || 0;  // Load saved item count or 0
+                updateCart();  // Update the cart visually on load
+                document.getElementById('cart-count').textContent = cartItemCount;
+            }
+        };
+    
+        // Add to Cart
+        function addToCart(itemName, price) {
+            cart.push({ name: itemName, price: price });
+            total += price;
+    
+            // Update item count
+            cartItemCount = cart.length;
+            document.getElementById('cart-count').textContent = cartItemCount;
+    
+            // Save cart and total price to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('total', total);
+            localStorage.setItem('cartItemCount', cartItemCount);  // Save item count
+    
+            // Show notification
+            showNotification(`${itemName} has been added to your cart.`);
+            updateCart();
+        }
+    
+        // Update Cart
+        function updateCart() {
+            const cartItemsElement = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            cartItemsElement.innerHTML = '';
+    
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.classList.add('cart-item');
+    
+                li.innerHTML = `${item.name} - R${item.price} 
+                                <button onclick="removeFromCart(${index})">Delete</button>`;
+                cartItemsElement.appendChild(li);
+            });
+    
+            totalPriceElement.textContent = total.toFixed(2);
+        }
+    
+        // Remove item from cart
+        function removeFromCart(index) {
+            const itemPrice = cart[index].price;
+            cart.splice(index, 1);  // Remove item from array
+            total -= itemPrice;  // Subtract price from total
+    
+            // Update item count
+            cartItemCount = cart.length;
+            document.getElementById('cart-count').textContent = cartItemCount;
+    
+            // Update localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('total', total);
+            localStorage.setItem('cartItemCount', cartItemCount);
+    
+            updateCart();
+        }
+    
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+    
+            alert(`Thank you for your purchase of R${total.toFixed(2)}!`);
+            cart = [];
+            total = 0;
+            cartItemCount = 0;
+            document.getElementById('cart-count').textContent = cartItemCount;
+    
+            localStorage.removeItem('cart');
+            localStorage.removeItem('total');
+            localStorage.removeItem('cartItemCount');
+    
+            updateCart();
+        }
+    
+        // Toggle cart visibility
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cart-sidebar');
+            cartSidebar.classList.toggle('open');
+        }
+    
+        // Show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+    
+</body>
+</html>
